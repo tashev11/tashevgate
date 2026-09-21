@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose a new rule, integration or release-proof capability
+title: "[Feature] "
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Secret/security rule
+        - Auth/permissions
+        - Database/migrations
+        - CI/build
+        - Docker/IaC
+        - Staging sandbox
+        - Deploy/rollback
+        - Report/SARIF
+        - GitHub integration
+        - Other
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What evidence should VibeGate detect or prove?
+    validations:
+      required: true
