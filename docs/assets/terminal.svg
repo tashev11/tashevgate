@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="390" viewBox="0 0 1100 390" role="img" aria-labelledby="title">
+<title id="title">TashevGate terminal example</title>
+<rect width="1100" height="390" rx="26" fill="#080d17"/>
+<rect x="0" y="0" width="1100" height="48" rx="26" fill="#111827"/>
+<rect x="0" y="25" width="1100" height="23" fill="#111827"/>
+<circle cx="28" cy="24" r="7" fill="#fb7185"/><circle cx="52" cy="24" r="7" fill="#fbbf24"/><circle cx="76" cy="24" r="7" fill="#4ade80"/>
+<text x="520" y="29" text-anchor="middle" fill="#64748b" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">tashevgate — terminal</text>
+<g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16">
+  <text x="42" y="92" fill="#60a5fa">$</text><text x="65" y="92" fill="#e2e8f0">tashevgate check .</text>
+  <text x="42" y="132" fill="#94a3b8">Scanning repository...</text>
+  <text x="42" y="166" fill="#c4b5fd">✓</text><text x="65" y="166" fill="#cbd5e1">Secrets &amp; environment</text>
+  <text x="42" y="196" fill="#c4b5fd">✓</text><text x="65" y="196" fill="#cbd5e1">Migrations &amp; recovery</text>
+  <text x="42" y="226" fill="#c4b5fd">✓</text><text x="65" y="226" fill="#cbd5e1">Runtime / auth / CI readiness</text>
+  <text x="42" y="272" fill="#4ade80" font-weight="700">TashevGate · READY</text>
+  <text x="42" y="307" fill="#94a3b8">Gate threshold: blocker · 0 blocking findings</text>
+  <text x="42" y="342" fill="#64748b">Reports: console · markdown · json · sarif</text>
+</g>
+</svg>
