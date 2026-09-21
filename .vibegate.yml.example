@@ -1,0 +1,25 @@
+version: 1
+
+gate:
+  fail_on: blocker
+
+scan:
+  max_file_bytes: 1000000
+  exclude:
+    - ".git/**"
+    - "node_modules/**"
+    - "vendor/**"
+    - ".venv/**"
+    - "dist/**"
+    - "build/**"
+    - "coverage/**"
+    - "*.min.js"
+    - "*.map"
+
+rules:
+  disabled: []
+  severity_overrides: {}
+  allow_destructive_migrations: false
+
+reports:
+  directory: ".vibegate"
