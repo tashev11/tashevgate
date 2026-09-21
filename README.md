@@ -48,6 +48,14 @@ Fix the evidence before the release continues.
 
 There is no vanity score. **Detection and release policy are separate**: TashevGate finds evidence, then your configured threshold decides whether the release can continue.
 
+<table>
+<tr>
+<td width="33%" align="center"><b>🔍 Evidence</b><br><sub>Find concrete release risks</sub></td>
+<td width="33%" align="center"><b>🧠 Policy</b><br><sub>Apply your blocking threshold</sub></td>
+<td width="33%" align="center"><b>🚦 Decision</b><br><sub>READY or BLOCKED</sub></td>
+</tr>
+</table>
+
 <p align="center">
   <img src="docs/assets/validation.svg" alt="TashevGate v0.1 release validation" width="100%">
 </p>
@@ -59,6 +67,10 @@ There is no vanity score. **Detection and release policy are separate**: TashevG
 ## 🔍 What TashevGate checks
 
 The current catalog contains **18 built-in rules**.
+
+<p align="center">
+  <img src="docs/assets/checks-grid.svg" alt="TashevGate checks around the whole release" width="100%">
+</p>
 
 <p align="center">
   <img src="docs/assets/rule-matrix.svg" alt="TashevGate v0.1 rule coverage chart" width="100%">
@@ -156,6 +168,10 @@ TashevGate deliberately does **not** silently rewrite authentication, payments, 
 ---
 
 ## 🤖 GitHub Action
+
+<p align="center">
+  <img src="docs/assets/github-action.svg" alt="TashevGate in a GitHub pull request flow" width="100%">
+</p>
 
 After `tashevgate init`, every pull request can run the gate.
 
@@ -257,6 +273,10 @@ tashevgate check . \
 ## 🚀 Where TashevGate is going
 
 The static gate is only the first layer.
+
+<p align="center">
+  <img src="docs/assets/roadmap.svg" alt="TashevGate roadmap from static gate to release guardian" width="100%">
+</p>
 
 ```text
 Repository
