@@ -1,30 +1,100 @@
-# TashevGate
+<p align="center">
+  <img src="docs/assets/hero.svg" alt="TashevGate — production readiness gate for AI-built software" width="100%">
+</p>
 
-> **AI can write the app. TashevGate checks whether you should dare to ship it.**
+<p align="center">
+  <a href="https://github.com/tashev11/tashevgate/releases/tag/v0.1.0"><img alt="Release" src="https://img.shields.io/badge/release-v0.1.0-7c3aed?style=for-the-badge"></a>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.11%2B-2563eb?style=for-the-badge&logo=python&logoColor=white">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-059669?style=for-the-badge">
+  <img alt="Local first" src="https://img.shields.io/badge/local--first-no%20cloud%20required-0f172a?style=for-the-badge">
+</p>
 
-**TashevGate** is an open-source production readiness gate for AI-built and vibe-coded software. It scans the whole project for high-impact release risks and returns a deliberately simple decision:
+<p align="center">
+  <strong>AI can write the app. TashevGate checks whether you should dare to ship it.</strong>
+</p>
 
-**READY** or **BLOCKED**.
+<p align="center">
+  <a href="#-60-second-start">Quick start</a> ·
+  <a href="#-what-tashevgate-checks">Rules</a> ·
+  <a href="#-github-action">GitHub Action</a> ·
+  <a href="docs/README_RU.md">Русская документация</a> ·
+  <a href="ROADMAP.md">Roadmap</a>
+</p>
 
-It is not another style linter and it does not invent a vanity score. A release is blocked only when configured evidence reaches the gate threshold.
+---
 
-## What it catches
+## 🛡 What TashevGate is
 
-TashevGate v0.1 includes rules for:
+**TashevGate** is an open-source production-readiness gate for AI-built and vibe-coded software.
 
-- committed OpenAI-compatible, GitHub, AWS, Stripe and Telegram secrets;
-- private keys and real `.env` files;
-- secret-looking values exposed through `NEXT_PUBLIC_`, `VITE_` or `REACT_APP_`;
-- destructive SQL migrations;
-- missing `.gitignore` protection;
-- missing dependency lock files;
-- missing tests and CI;
-- migrations without documented **backup + rollback**;
-- production debug mode;
-- wildcard CORS;
-- admin-looking routes without obvious authorization markers.
+It scans the project for high-impact release risks and returns a deliberately simple decision:
 
-## 60-second start
+<table>
+<tr>
+<td width="50%" align="center">
+
+### 🟢 READY
+No configured release blocker was found.
+
+</td>
+<td width="50%" align="center">
+
+### 🔴 BLOCKED
+Fix the evidence before the release continues.
+
+</td>
+</tr>
+</table>
+
+There is no vanity score. **Detection and release policy are separate**: TashevGate finds evidence, then your configured threshold decides whether the release can continue.
+
+<p align="center">
+  <img src="docs/assets/validation.svg" alt="TashevGate v0.1 release validation" width="100%">
+</p>
+
+> Release-validation numbers above describe the current **v0.1 repository**: 12 automated tests passed, the self-scan returned READY with 0 findings, and four report formats are supported.
+
+---
+
+## 🔍 What TashevGate checks
+
+The current catalog contains **18 built-in rules**.
+
+<p align="center">
+  <img src="docs/assets/rule-matrix.svg" alt="TashevGate v0.1 rule coverage chart" width="100%">
+</p>
+
+| Area | Examples |
+|---|---|
+| 🔐 **Secrets & environment** | OpenAI-compatible keys, GitHub tokens, AWS keys, Stripe live secrets, Telegram bot tokens, private keys, real `.env`, frontend-exposed secret names |
+| 🗄️ **Database & recovery** | Destructive SQL migrations, missing documented backup + rollback |
+| 📦 **Repository readiness** | Missing `.gitignore`, lock files, tests, CI |
+| ⚙️ **Runtime & security** | Debug mode, wildcard CORS, suspicious admin routes without obvious authorization markers |
+
+Full catalog: [RULES.md](RULES.md).
+
+---
+
+## 🧠 How the decision works
+
+<p align="center">
+  <img src="docs/assets/pipeline.svg" alt="TashevGate release decision pipeline" width="100%">
+</p>
+
+The scanner is **local-first and deterministic**. Source code does not need to be uploaded to a TashevGate cloud service.
+
+1. Collect project evidence.
+2. Detect languages, frameworks, manifests, tests, CI and migrations.
+3. Run built-in rules.
+4. Apply your policy threshold.
+5. Return **READY** or **BLOCKED**.
+6. Emit Console, Markdown, JSON or SARIF evidence.
+
+More details: [ARCHITECTURE.md](ARCHITECTURE.md).
+
+---
+
+## ⚡ 60-second start
 
 ```bash
 git clone https://github.com/tashev11/tashevgate.git
@@ -37,25 +107,21 @@ pip install -e .
 tashevgate check /path/to/your/project
 ```
 
-Typical result:
+<p align="center">
+  <img src="docs/assets/terminal.svg" alt="TashevGate terminal example" width="92%">
+</p>
 
-```text
-TashevGate · BLOCKED
-Scanned 184 files · gate threshold: blocker
+Exit codes are automation-friendly:
 
-⛔ BLOCKER ENV001 · .env
-   Environment file is inside the project
+| Code | Meaning |
+|---:|---|
+| **0** | READY |
+| **2** | BLOCKED |
+| **3** | invalid project/config invocation |
 
-⛔ BLOCKER MIG001 · migrations/042_cleanup.sql:8
-   Destructive database migration
+---
 
-🔴 HIGH RECOVERY001
-   Database changes lack documented backup + rollback
-```
-
-Exit code is non-zero when the gate is blocked, so TashevGate can stop a deployment.
-
-## Add it to an existing project
+## 🧩 Add TashevGate to an existing project
 
 ```bash
 cd your-project
@@ -71,7 +137,9 @@ tashevgate check .
 
 It never overwrites an existing TashevGate config or workflow.
 
-## Safe fixes
+---
+
+## 🛠 Safe fixes
 
 ```bash
 tashevgate fix .
@@ -80,12 +148,14 @@ tashevgate fix .
 The safe fixer currently:
 
 - protects `.env`, private keys and TashevGate reports in `.gitignore`;
-- can build `.env.example` from variable **names only**;
-- never copies secret values into the example file.
+- can create `.env.example` from variable **names only**;
+- never copies original secret values.
 
-TashevGate intentionally does not auto-rewrite auth, database or security logic in v0.1.
+TashevGate deliberately does **not** silently rewrite authentication, payments, database logic or production infrastructure in v0.1.
 
-## GitHub Action
+---
+
+## 🤖 GitHub Action
 
 After `tashevgate init`, every pull request can run the gate.
 
@@ -93,19 +163,28 @@ Or add it manually:
 
 ```yaml
 - uses: actions/checkout@v4
+
 - uses: tashev11/tashevgate@v0.1.0
   with:
     path: "."
     fail-on: "blocker"
 ```
 
-The action also writes a SARIF report to `.tashevgate/tashevgate.sarif`.
+The action writes SARIF evidence to:
 
-## CLI
+```text
+.tashevgate/tashevgate.sarif
+```
+
+That means TashevGate can act as a real pre-release gate in CI instead of being only a report generator.
+
+---
+
+## 🖥 CLI
 
 ```bash
 tashevgate check .                         # human console report
-tashevgate check . --format markdown       # audit/report document
+tashevgate check . --format markdown       # audit document
 tashevgate check . --format json           # machine-readable result
 tashevgate check . --format sarif          # GitHub/code-scanning format
 tashevgate check . --fail-on high          # stricter release policy
@@ -115,24 +194,25 @@ tashevgate explain MIG001                  # explain one rule
 tashevgate doctor                           # local environment
 ```
 
-Exit codes:
+---
 
-| Code | Meaning |
-|---:|---|
-| 0 | READY |
-| 2 | BLOCKED |
-| 3 | invalid project/config invocation |
+## 🎛 Policy
 
-## Policy
+Default:
 
-The default gate blocks only **BLOCKER** findings. Teams can make HIGH or MEDIUM findings blocking:
+```yaml
+gate:
+  fail_on: blocker
+```
+
+Make HIGH findings blocking:
 
 ```yaml
 gate:
   fail_on: high
 ```
 
-Rules can be disabled or severity-adjusted explicitly:
+Override explicit rules:
 
 ```yaml
 rules:
@@ -145,82 +225,115 @@ rules:
   allow_destructive_migrations: false
 ```
 
-See [RULES.md](RULES.md).
+Prefer narrow exceptions over disabling the gate.
 
-## Reports
+---
 
-TashevGate supports:
+## 📄 Reports
 
-- human console output;
-- Markdown;
-- JSON;
-- SARIF 2.1.0.
+TashevGate supports four output formats:
 
-Example:
+| Format | Best for |
+|---|---|
+| **Console** | humans and local development |
+| **Markdown** | audit/release documents |
+| **JSON** | automation and agents |
+| **SARIF 2.1.0** | GitHub/code-scanning ecosystems |
 
 ```bash
 mkdir -p .tashevgate
-tashevgate check . --format markdown --output .tashevgate/report.md
-tashevgate check . --format sarif --output .tashevgate/tashevgate.sarif
+
+tashevgate check . \
+  --format markdown \
+  --output .tashevgate/report.md
+
+tashevgate check . \
+  --format sarif \
+  --output .tashevgate/tashevgate.sarif
 ```
 
-## Architecture
+---
 
-```mermaid
-flowchart LR
-    R[Repository] --> C[Project detector]
-    C --> S[Secret rules]
-    C --> M[Migration rules]
-    C --> P[Readiness rules]
-    C --> X[Runtime/security rules]
-    S & M & P & X --> G[Policy engine]
-    G -->|critical evidence| B[BLOCKED]
-    G -->|threshold clear| A[READY]
-    G --> J[JSON]
-    G --> MD[Markdown]
-    G --> SARIF[SARIF]
-    G --> GH[GitHub Action]
+## 🚀 Where TashevGate is going
+
+The static gate is only the first layer.
+
+```text
+Repository
+   ↓
+Static evidence gate          ← v0.1
+   ↓
+Ephemeral build sandbox       ← planned
+   ↓
+Disposable database
+   ↓
+Auth / API / browser smoke tests
+   ↓
+Backup → migration → restore proof
+   ↓
+Release evidence
+   ↓
+Deploy → health check → rollback
 ```
 
-The core is intentionally local and deterministic. No source code has to be uploaded to a TashevGate cloud service.
+Near-term roadmap:
 
-More: [ARCHITECTURE.md](ARCHITECTURE.md).
-
-## Why another tool?
-
-Code review, SAST, error monitoring and CI each solve useful pieces of the problem. TashevGate focuses on the release boundary:
-
-> **Can this AI-built project move toward production without an obvious release blocker?**
-
-The roadmap extends this from static evidence to real staging validation: build, temporary deployment, auth flows, database backup/rollback, browser smoke tests, performance and recovery.
-
-## Roadmap
-
-Near-term work:
-
-- packet-level dependency and supply-chain checks;
-- framework-aware auth rules;
-- Docker/IaC production rules;
+- framework-aware Next.js / FastAPI / Supabase auth checks;
+- Docker and IaC production rules;
+- dependency and supply-chain evidence;
+- pull-request baseline/diff mode;
 - staging sandbox runner;
 - browser E2E smoke agents;
 - database backup/restore proof;
 - deploy + health check + automatic rollback;
-- reusable “Vibe Certificate” evidence for open-source projects.
+- **Vibe Certificate**: verifiable release evidence for GitHub projects.
 
-See [ROADMAP.md](ROADMAP.md).
+See [ROADMAP.md](ROADMAP.md) and the open [GitHub Issues](https://github.com/tashev11/tashevgate/issues).
 
-## Русская документация
+---
 
-[docs/README_RU.md](docs/README_RU.md)
+## 🔒 Security model
 
-## Security
+TashevGate itself may scan secrets, but ordinary reports redact matched secret values.
 
-TashevGate itself may scan secrets, but reports deliberately redact detected secret values. Read [SECURITY.md](SECURITY.md) before using SARIF or other reports in public repositories.
+A clean scan is **evidence that configured checks passed**, not a mathematical proof that an application is secure.
 
-## Contributing
+Read [SECURITY.md](SECURITY.md) before publishing reports from private or sensitive projects.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome, especially for:
+
+- framework adapters;
+- high-confidence security rules;
+- migration safety;
+- Docker/IaC checks;
+- staging sandboxing;
+- release evidence.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## License
+---
 
-MIT © Rinat Tashev
+## 📚 Documentation
+
+- [Architecture](ARCHITECTURE.md)
+- [Built-in rules](RULES.md)
+- [Roadmap](ROADMAP.md)
+- [Security](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+- [Русская документация](docs/README_RU.md)
+- [Changelog](CHANGELOG.md)
+
+---
+
+<p align="center">
+  <strong>TashevGate</strong><br>
+  From vibe code to release evidence.
+</p>
+
+<p align="center">
+  MIT © Rinat Tashev
+</p>
