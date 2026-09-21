@@ -43,3 +43,8 @@ Updated: 2026-09-21
 3. Database backup/migration/restore proof (Issue #3).
 4. PR baseline/diff mode (Issue #4).
 5. Vibe Certificate evidence format (Issue #5).
+
+## Visual packaging
+- README redesigned with visual hero banner, validation cards, rule coverage chart, release pipeline, terminal demo and Tashev ecosystem graphic.
+- Russian guide updated with the same visual system.
+- All SVG assets validated as well-formed XML on macOS.
