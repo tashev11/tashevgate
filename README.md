@@ -317,6 +317,16 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
+## 🧭 Part of the Tashev developer ecosystem
+
+<p align="center">
+  <img src="docs/assets/ecosystem.svg" alt="TashevOS → TashevGate → TashevNet developer ecosystem" width="100%">
+</p>
+
+TashevGate is designed to sit between project continuity and runtime monitoring: understand the project, prove the release, then watch production connectivity.
+
+---
+
 ## 📚 Documentation
 
 - [Architecture](ARCHITECTURE.md)
