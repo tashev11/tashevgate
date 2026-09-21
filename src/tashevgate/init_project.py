@@ -28,10 +28,10 @@ rules:
   allow_destructive_migrations: false
 
 reports:
-  directory: ".vibegate"
+  directory: ".tashevgate"
 """
 
-WORKFLOW = """name: VibeGate
+WORKFLOW = """name: TashevGate
 
 on:
   pull_request:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: tashev11/vibegate@v0.1.0
+      - uses: tashev11/tashevgate@v0.1.0
         with:
           path: "."
           fail-on: "blocker"
@@ -57,7 +57,7 @@ jobs:
         continue-on-error: true
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: .vibegate/vibegate.sarif
+          sarif_file: .tashevgate/tashevgate.sarif
 """
 
 
@@ -65,16 +65,16 @@ def initialize(root: Path) -> dict:
     root.mkdir(parents=True, exist_ok=True)
     created: list[str] = []
 
-    config = root / ".vibegate.yml"
+    config = root / ".tashevgate.yml"
     if not config.exists():
         config.write_text(DEFAULT_CONFIG, encoding="utf-8")
-        created.append(".vibegate.yml")
+        created.append(".tashevgate.yml")
 
-    workflow = root / ".github" / "workflows" / "vibegate.yml"
+    workflow = root / ".github" / "workflows" / "tashevgate.yml"
     if not workflow.exists():
         workflow.parent.mkdir(parents=True, exist_ok=True)
         workflow.write_text(WORKFLOW, encoding="utf-8")
-        created.append(".github/workflows/vibegate.yml")
+        created.append(".github/workflows/tashevgate.yml")
 
     gitignore_added = ensure_gitignore(root)
     return {"created": created, "gitignore_added": gitignore_added}

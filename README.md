@@ -1,8 +1,8 @@
-# VibeGate
+# TashevGate
 
-> **AI can write the app. VibeGate checks whether you should dare to ship it.**
+> **AI can write the app. TashevGate checks whether you should dare to ship it.**
 
-**VibeGate** is an open-source production readiness gate for AI-built and vibe-coded software. It scans the whole project for high-impact release risks and returns a deliberately simple decision:
+**TashevGate** is an open-source production readiness gate for AI-built and vibe-coded software. It scans the whole project for high-impact release risks and returns a deliberately simple decision:
 
 **READY** or **BLOCKED**.
 
@@ -10,7 +10,7 @@ It is not another style linter and it does not invent a vanity score. A release 
 
 ## What it catches
 
-VibeGate v0.1 includes rules for:
+TashevGate v0.1 includes rules for:
 
 - committed OpenAI-compatible, GitHub, AWS, Stripe and Telegram secrets;
 - private keys and real `.env` files;
@@ -27,20 +27,20 @@ VibeGate v0.1 includes rules for:
 ## 60-second start
 
 ```bash
-git clone https://github.com/tashev11/vibegate.git
-cd vibegate
+git clone https://github.com/tashev11/tashevgate.git
+cd tashevgate
 
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 
-vibegate check /path/to/your/project
+tashevgate check /path/to/your/project
 ```
 
 Typical result:
 
 ```text
-VibeGate · BLOCKED
+TashevGate · BLOCKED
 Scanned 184 files · gate threshold: blocker
 
 ⛔ BLOCKER ENV001 · .env
@@ -53,66 +53,66 @@ Scanned 184 files · gate threshold: blocker
    Database changes lack documented backup + rollback
 ```
 
-Exit code is non-zero when the gate is blocked, so VibeGate can stop a deployment.
+Exit code is non-zero when the gate is blocked, so TashevGate can stop a deployment.
 
 ## Add it to an existing project
 
 ```bash
 cd your-project
-vibegate init
-vibegate check .
+tashevgate init
+tashevgate check .
 ```
 
-`vibegate init` safely creates:
+`tashevgate init` safely creates:
 
-- `.vibegate.yml`;
-- `.github/workflows/vibegate.yml`;
+- `.tashevgate.yml`;
+- `.github/workflows/tashevgate.yml`;
 - missing secret-related `.gitignore` entries.
 
-It never overwrites an existing VibeGate config or workflow.
+It never overwrites an existing TashevGate config or workflow.
 
 ## Safe fixes
 
 ```bash
-vibegate fix .
+tashevgate fix .
 ```
 
 The safe fixer currently:
 
-- protects `.env`, private keys and VibeGate reports in `.gitignore`;
+- protects `.env`, private keys and TashevGate reports in `.gitignore`;
 - can build `.env.example` from variable **names only**;
 - never copies secret values into the example file.
 
-VibeGate intentionally does not auto-rewrite auth, database or security logic in v0.1.
+TashevGate intentionally does not auto-rewrite auth, database or security logic in v0.1.
 
 ## GitHub Action
 
-After `vibegate init`, every pull request can run the gate.
+After `tashevgate init`, every pull request can run the gate.
 
 Or add it manually:
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: tashev11/vibegate@v0.1.0
+- uses: tashev11/tashevgate@v0.1.0
   with:
     path: "."
     fail-on: "blocker"
 ```
 
-The action also writes a SARIF report to `.vibegate/vibegate.sarif`.
+The action also writes a SARIF report to `.tashevgate/tashevgate.sarif`.
 
 ## CLI
 
 ```bash
-vibegate check .                         # human console report
-vibegate check . --format markdown       # audit/report document
-vibegate check . --format json           # machine-readable result
-vibegate check . --format sarif          # GitHub/code-scanning format
-vibegate check . --fail-on high          # stricter release policy
-vibegate init .                           # config + GitHub workflow
-vibegate fix .                            # deterministic safe fixes
-vibegate explain MIG001                  # explain one rule
-vibegate doctor                           # local environment
+tashevgate check .                         # human console report
+tashevgate check . --format markdown       # audit/report document
+tashevgate check . --format json           # machine-readable result
+tashevgate check . --format sarif          # GitHub/code-scanning format
+tashevgate check . --fail-on high          # stricter release policy
+tashevgate init .                           # config + GitHub workflow
+tashevgate fix .                            # deterministic safe fixes
+tashevgate explain MIG001                  # explain one rule
+tashevgate doctor                           # local environment
 ```
 
 Exit codes:
@@ -149,7 +149,7 @@ See [RULES.md](RULES.md).
 
 ## Reports
 
-VibeGate supports:
+TashevGate supports:
 
 - human console output;
 - Markdown;
@@ -159,9 +159,9 @@ VibeGate supports:
 Example:
 
 ```bash
-mkdir -p .vibegate
-vibegate check . --format markdown --output .vibegate/report.md
-vibegate check . --format sarif --output .vibegate/vibegate.sarif
+mkdir -p .tashevgate
+tashevgate check . --format markdown --output .tashevgate/report.md
+tashevgate check . --format sarif --output .tashevgate/tashevgate.sarif
 ```
 
 ## Architecture
@@ -182,13 +182,13 @@ flowchart LR
     G --> GH[GitHub Action]
 ```
 
-The core is intentionally local and deterministic. No source code has to be uploaded to a VibeGate cloud service.
+The core is intentionally local and deterministic. No source code has to be uploaded to a TashevGate cloud service.
 
 More: [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Why another tool?
 
-Code review, SAST, error monitoring and CI each solve useful pieces of the problem. VibeGate focuses on the release boundary:
+Code review, SAST, error monitoring and CI each solve useful pieces of the problem. TashevGate focuses on the release boundary:
 
 > **Can this AI-built project move toward production without an obvious release blocker?**
 
@@ -215,7 +215,7 @@ See [ROADMAP.md](ROADMAP.md).
 
 ## Security
 
-VibeGate itself may scan secrets, but reports deliberately redact detected secret values. Read [SECURITY.md](SECURITY.md) before using SARIF or other reports in public repositories.
+TashevGate itself may scan secrets, but reports deliberately redact detected secret values. Read [SECURITY.md](SECURITY.md) before using SARIF or other reports in public repositories.
 
 ## Contributing
 

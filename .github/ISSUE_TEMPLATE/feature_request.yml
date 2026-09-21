@@ -26,6 +26,6 @@ body:
   - type: textarea
     id: evidence
     attributes:
-      label: What evidence should VibeGate detect or prove?
+      label: What evidence should TashevGate detect or prove?
     validations:
       required: true

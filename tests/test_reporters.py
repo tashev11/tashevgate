@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from vibegate.reporters.markdown import render_markdown
-from vibegate.reporters.sarif import render_sarif
-from vibegate.scanner import scan
+from tashevgate.reporters.markdown import render_markdown
+from tashevgate.reporters.sarif import render_sarif
+from tashevgate.scanner import scan
 
 
 def test_reports_render(tmp_path: Path):

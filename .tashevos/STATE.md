@@ -3,7 +3,7 @@
 Updated: 2026-09-21
 
 ## Implemented
-- public GitHub repository: `tashev11/vibegate`
+- public GitHub repository: `tashev11/tashevgate`
 - Python CLI/package and GitHub composite action
 - project/language/framework detection
 - high-confidence secret and real `.env` blockers
@@ -13,7 +13,7 @@ Updated: 2026-09-21
 - configurable release threshold, rule disabling and severity overrides
 - console, Markdown, JSON and SARIF reports
 - deterministic safe fixer
-- `vibegate init` project bootstrap
+- `tashevgate init` project bootstrap
 - dependency lock file
 - GitHub issue/PR templates
 - documentation and Russian quickstart
@@ -23,7 +23,7 @@ Updated: 2026-09-21
 - clean editable install passed
 - Ruff passed
 - 12 pytest tests passed
-- VibeGate self-scan: READY, 0 findings
+- TashevGate self-scan: READY, 0 findings
 - wheel build passed
 - clean wheel install passed
 - installed-wheel self-scan: READY, 0 findings
@@ -31,9 +31,11 @@ Updated: 2026-09-21
 - CLI `init` smoke test passed
 - CLI `fix` smoke test passed
 - generated `.env.example` contained variable names only, no source values
+- renamed from VibeGate before public promotion after detecting existing projects with that name
+- TashevGate name/package search returned no direct conflict in the checked web/PyPI searches
 
 ## Next
-1. Publish/tag v0.1.0.
+1. Publish/tag v0.1.0 under TashevGate.
 2. Framework-aware auth verification (Issue #1).
 3. Staging sandbox runner (Issue #2).
 4. Database backup/migration/restore proof (Issue #3).

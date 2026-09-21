@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from vibegate.models import GateStatus
-from vibegate.scanner import scan
+from tashevgate.models import GateStatus
+from tashevgate.scanner import scan
 
 
 def base_project(tmp_path: Path) -> None:

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from vibegate.scanner import scan
+from tashevgate.scanner import scan
 
 
 def prepare(tmp_path: Path) -> None:
@@ -31,7 +31,7 @@ def test_destructive_migration_can_be_explicitly_allowed(tmp_path: Path):
     migrations.mkdir()
     destructive_sql = "DROP " + "TABLE old_users;\n"
     (migrations / "002_drop.sql").write_text(destructive_sql, encoding="utf-8")
-    (tmp_path / ".vibegate.yml").write_text(
+    (tmp_path / ".tashevgate.yml").write_text(
         "rules:\n  allow_destructive_migrations: true\n", encoding="utf-8"
     )
 

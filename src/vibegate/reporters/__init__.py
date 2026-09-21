@@ -1,1 +1,0 @@
-"""VibeGate report renderers."""

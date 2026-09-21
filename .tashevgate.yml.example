@@ -22,4 +22,4 @@ rules:
   allow_destructive_migrations: false
 
 reports:
-  directory: ".vibegate"
+  directory: ".tashevgate"

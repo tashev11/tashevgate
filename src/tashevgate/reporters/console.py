@@ -13,7 +13,7 @@ ICONS = {
 def render_console(result: ScanResult) -> str:
     lines = [
         "",
-        f"VibeGate · {result.status.value}",
+        f"TashevGate · {result.status.value}",
         f"Scanned {result.files_scanned} files · gate threshold: {result.fail_on.name.lower()}",
         "",
     ]

@@ -1,6 +1,6 @@
 # Agent instructions
 
-Before modifying VibeGate:
+Before modifying TashevGate:
 
 1. Read `.tashevos/STATE.md`.
 2. Read `.tashevos/PROJECT.md`.

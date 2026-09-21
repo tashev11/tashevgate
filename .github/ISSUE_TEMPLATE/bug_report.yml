@@ -1,5 +1,5 @@
 name: Bug report
-description: Report an incorrect VibeGate result or CLI problem
+description: Report an incorrect TashevGate result or CLI problem
 title: "[Bug] "
 body:
   - type: textarea

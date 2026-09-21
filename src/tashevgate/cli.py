@@ -30,7 +30,7 @@ def _check(args: argparse.Namespace) -> int:
     try:
         result = scan(args.path, args.config, args.fail_on)
     except ValueError as exc:
-        print(f"VibeGate error: {exc}", file=sys.stderr)
+        print(f"TashevGate error: {exc}", file=sys.stderr)
         return 3
 
     if args.format == "console":
@@ -60,7 +60,7 @@ def _fix(args: argparse.Namespace) -> int:
 
 
 def _doctor(_: argparse.Namespace) -> int:
-    print(f"VibeGate {__version__}")
+    print(f"TashevGate {__version__}")
     print(f"Python {platform.python_version()}")
     print(f"Platform {platform.platform()}")
     print("CLI ready.")
@@ -79,7 +79,7 @@ def _explain(args: argparse.Namespace) -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="vibegate", description="Production gate for AI-built software")
+    parser = argparse.ArgumentParser(prog="tashevgate", description="Production gate for AI-built software")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -91,7 +91,7 @@ def main() -> None:
     check.add_argument("--output")
     check.set_defaults(func=_check)
 
-    init = sub.add_parser("init", help="Add VibeGate config and GitHub workflow")
+    init = sub.add_parser("init", help="Add TashevGate config and GitHub workflow")
     init.add_argument("path", nargs="?", default=".")
     init.set_defaults(func=_init)
 
@@ -103,7 +103,7 @@ def main() -> None:
     explain.add_argument("rule_id")
     explain.set_defaults(func=_explain)
 
-    doctor = sub.add_parser("doctor", help="Show local VibeGate environment")
+    doctor = sub.add_parser("doctor", help="Show local TashevGate environment")
     doctor.set_defaults(func=_doctor)
 
     args = parser.parse_args()

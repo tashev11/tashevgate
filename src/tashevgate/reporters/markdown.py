@@ -6,7 +6,7 @@ from ..models import ScanResult
 def render_markdown(result: ScanResult) -> str:
     status = "🟢 READY" if result.status.value == "READY" else "🔴 BLOCKED"
     lines = [
-        "# VibeGate report",
+        "# TashevGate report",
         "",
         f"**Release status:** {status}",
         "",

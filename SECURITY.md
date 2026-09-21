@@ -6,13 +6,13 @@ Do not put real credentials, private keys or sensitive repository contents into 
 
 ## Scanner behavior
 
-VibeGate reads project files locally. v0.1 does not require uploading source code to an external service.
+TashevGate reads project files locally. v0.1 does not require uploading source code to an external service.
 
 High-confidence secret findings redact the matched secret in normal output. Even so, treat generated reports as potentially sensitive because file paths and configuration findings can reveal project structure.
 
 ## Safe fixer
 
-`vibegate fix` is intentionally limited to deterministic operations. When generating `.env.example`, it copies environment-variable names only and never the original values.
+`tashevgate fix` is intentionally limited to deterministic operations. When generating `.env.example`, it copies environment-variable names only and never the original values.
 
 ## Git history
 

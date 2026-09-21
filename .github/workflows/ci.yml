@@ -25,4 +25,4 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check src tests
       - run: pytest -q
-      - run: vibegate check . --fail-on blocker
+      - run: tashevgate check . --fail-on blocker

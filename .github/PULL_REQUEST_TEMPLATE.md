@@ -14,4 +14,4 @@ What problem does this solve?
 
 - [ ] `ruff check src tests`
 - [ ] `pytest -q`
-- [ ] `vibegate check . --fail-on blocker`
+- [ ] `tashevgate check . --fail-on blocker`

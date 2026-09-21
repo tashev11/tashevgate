@@ -9,7 +9,7 @@ GITIGNORE_LINES = [
     "!.env.example",
     "*.pem",
     "*.key",
-    ".vibegate/",
+    ".tashevgate/",
 ]
 
 

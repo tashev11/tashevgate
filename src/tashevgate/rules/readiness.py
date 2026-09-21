@@ -64,7 +64,7 @@ def scan_readiness(root: Path, files: list[FileRecord], detected: dict) -> list[
                 title="No CI workflow detected",
                 severity=Severity.MEDIUM,
                 message="No GitHub Actions workflow was found.",
-                remediation="Run VibeGate, tests and build checks on every pull request.",
+                remediation="Run TashevGate, tests and build checks on every pull request.",
                 auto_fixable=True,
             )
         )

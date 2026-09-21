@@ -1,6 +1,6 @@
 # Architecture
 
-VibeGate v0.1 is a deterministic local release gate.
+TashevGate v0.1 is a deterministic local release gate.
 
 ## Pipeline
 
@@ -30,7 +30,7 @@ Sensitive matching values should never be copied to reports when a redacted repr
 
 ## Release philosophy
 
-VibeGate deliberately separates:
+TashevGate deliberately separates:
 
 - **evidence collection** — what was actually detected;
 - **severity** — how serious that evidence is;
@@ -44,7 +44,7 @@ The planned execution layer will add isolated ephemeral environments:
 
 ```mermaid
 flowchart TD
-  SRC[Repository] --> STATIC[Static VibeGate]
+  SRC[Repository] --> STATIC[Static TashevGate]
   STATIC -->|passes| BUILD[Build sandbox]
   BUILD --> DB[Disposable database]
   BUILD --> APP[Ephemeral application]

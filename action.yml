@@ -1,4 +1,4 @@
-name: VibeGate Production Readiness Gate
+name: TashevGate Production Readiness Gate
 description: Block risky AI-built software before production.
 author: Rinat Tashev
 
@@ -19,24 +19,24 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
-    - name: Install VibeGate action package
+    - name: Install TashevGate action package
       shell: bash
       run: python -m pip install "$GITHUB_ACTION_PATH"
     - name: Create report directory
       shell: bash
-      run: mkdir -p "$GITHUB_WORKSPACE/.vibegate"
+      run: mkdir -p "$GITHUB_WORKSPACE/.tashevgate"
     - name: Generate SARIF
       shell: bash
       run: |
         set +e
-        vibegate check "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}" --format sarif --output "$GITHUB_WORKSPACE/.vibegate/vibegate.sarif"
+        tashevgate check "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}" --format sarif --output "$GITHUB_WORKSPACE/.tashevgate/tashevgate.sarif"
         code=$?
-        echo "$code" > "$GITHUB_WORKSPACE/.vibegate/exit-code"
+        echo "$code" > "$GITHUB_WORKSPACE/.tashevgate/exit-code"
         exit 0
     - name: Enforce gate
       shell: bash
       run: |
-        vibegate check "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}"
+        tashevgate check "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}"
 
 branding:
   icon: shield

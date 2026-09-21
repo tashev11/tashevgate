@@ -50,8 +50,8 @@ def render_sarif(result: ScanResult) -> dict:
             {
                 "tool": {
                     "driver": {
-                        "name": "VibeGate",
-                        "informationUri": "https://github.com/tashev11/vibegate",
+                        "name": "TashevGate",
+                        "informationUri": "https://github.com/tashev11/tashevgate",
                         "rules": list(unique_rules.values()),
                     }
                 },

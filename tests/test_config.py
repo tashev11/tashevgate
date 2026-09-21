@@ -1,11 +1,11 @@
 from pathlib import Path
 
-from vibegate.scanner import scan
+from tashevgate.scanner import scan
 
 
 def test_rule_can_be_disabled(tmp_path: Path):
     (tmp_path / ".env").write_text("TOKEN=not-a-real-secret\n", encoding="utf-8")
-    (tmp_path / ".vibegate.yml").write_text(
+    (tmp_path / ".tashevgate.yml").write_text(
         "rules:\n  disabled:\n    - ENV001\n", encoding="utf-8"
     )
 

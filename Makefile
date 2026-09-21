@@ -10,6 +10,6 @@ test:
 	pytest -q
 
 gate:
-	vibegate check . --fail-on blocker
+	tashevgate check . --fail-on blocker
 
 check: lint test gate
