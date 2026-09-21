@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title">
+<title id="title">TashevGate v0.1 built-in rules by category</title>
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+<rect width="1200" height="360" rx="26" fill="#0b1120"/>
+<text x="60" y="56" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="800">18 built-in rules in v0.1</text>
+<text x="60" y="85" fill="#94a3b8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">Rule coverage by category — actual current catalog</text>
+<g font-family="Inter,Segoe UI,Arial,sans-serif">
+  <text x="60" y="145" fill="#cbd5e1" font-size="16" font-weight="700">Secrets &amp; environment</text>
+  <rect x="300" y="124" width="640" height="28" rx="14" fill="#172036"/>
+  <rect x="300" y="124" width="640" height="28" rx="14" fill="url(#g)"/>
+  <text x="965" y="145" fill="#fff" font-size="18" font-weight="800">8</text>
+
+  <text x="60" y="205" fill="#cbd5e1" font-size="16" font-weight="700">Repository readiness</text>
+  <rect x="300" y="184" width="640" height="28" rx="14" fill="#172036"/>
+  <rect x="300" y="184" width="400" height="28" rx="14" fill="url(#g)"/>
+  <text x="725" y="205" fill="#fff" font-size="18" font-weight="800">5</text>
+
+  <text x="60" y="265" fill="#cbd5e1" font-size="16" font-weight="700">Runtime / security</text>
+  <rect x="300" y="244" width="640" height="28" rx="14" fill="#172036"/>
+  <rect x="300" y="244" width="240" height="28" rx="14" fill="url(#g)"/>
+  <text x="565" y="265" fill="#fff" font-size="18" font-weight="800">3</text>
+
+  <text x="60" y="325" fill="#cbd5e1" font-size="16" font-weight="700">Database &amp; recovery</text>
+  <rect x="300" y="304" width="640" height="28" rx="14" fill="#172036"/>
+  <rect x="300" y="304" width="160" height="28" rx="14" fill="url(#g)"/>
+  <text x="485" y="325" fill="#fff" font-size="18" font-weight="800">2</text>
+</g>
+</svg>
