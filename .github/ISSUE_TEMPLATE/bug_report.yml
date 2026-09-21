@@ -1,0 +1,34 @@
+name: Bug report
+description: Report an incorrect VibeGate result or CLI problem
+title: "[Bug] "
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+      description: Include the rule ID and sanitized output when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Finding type
+      options:
+        - False positive
+        - False negative
+        - CLI/reporting bug
+        - GitHub Action bug
+        - Other
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: I removed real secrets and sensitive source data from this report.
+          required: true
