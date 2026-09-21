@@ -24,12 +24,15 @@ class FileRecord:
 
 def is_excluded(relative: str, patterns: list[str]) -> bool:
     normalized = relative.replace("\\", "/")
-    return any(
-        fnmatch.fnmatch(normalized, pattern)
-        or fnmatch.fnmatch("/" + normalized, pattern)
-        or normalized.startswith(pattern.rstrip("/**") + "/") if pattern.endswith("/**") else False
-        for pattern in patterns
-    )
+    for raw_pattern in patterns:
+        pattern = raw_pattern.replace("\\", "/")
+        if pattern.endswith("/**"):
+            prefix = pattern[:-3].rstrip("/")
+            if normalized == prefix or normalized.startswith(prefix + "/"):
+                return True
+        if fnmatch.fnmatch(normalized, pattern):
+            return True
+    return False
 
 
 def collect_files(root: Path, config: Config) -> list[FileRecord]:
