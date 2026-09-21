@@ -44,9 +44,10 @@ def collect_files(root: Path, config: Config) -> list[FileRecord]:
             continue
         if path.stat().st_size > config.max_file_bytes:
             continue
-        if path.suffix.lower() not in TEXT_EXTENSIONS and path.name not in {
+        special_name = path.name in {
             "Dockerfile", "Procfile", "Makefile", ".gitignore", ".dockerignore",
-        }:
+        } or path.name.startswith(".env")
+        if path.suffix.lower() not in TEXT_EXTENSIONS and not special_name:
             continue
         try:
             text = path.read_text(encoding="utf-8")
