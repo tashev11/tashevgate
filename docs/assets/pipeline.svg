@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title">
+<title id="title">TashevGate release decision pipeline</title>
+<defs>
+  <linearGradient id="pbg" x1="0" x2="1"><stop stop-color="#f7f9ff"/><stop offset="1" stop-color="#eef4ff"/></linearGradient>
+  <linearGradient id="blue" x1="0" x2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+  <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6b7da6"/></marker>
+</defs>
+<rect width="1200" height="440" rx="26" fill="url(#pbg)"/>
+<text x="60" y="58" fill="#0f172a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="800">How TashevGate decides whether a release can continue</text>
+<text x="60" y="87" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">Deterministic evidence first. Policy second. No vanity score.</text>
+<g font-family="Inter,Segoe UI,Arial,sans-serif">
+  <rect x="60" y="150" width="160" height="102" rx="18" fill="#fff" stroke="#dbe4f3"/>
+  <text x="87" y="189" fill="#2563eb" font-size="15" font-weight="800">01 · REPOSITORY</text>
+  <text x="87" y="220" fill="#0f172a" font-size="17" font-weight="700">Source + config</text>
+
+  <rect x="280" y="116" width="210" height="170" rx="18" fill="#fff" stroke="#dbe4f3"/>
+  <text x="306" y="151" fill="#7c3aed" font-size="15" font-weight="800">02 · EVIDENCE</text>
+  <text x="306" y="183" fill="#0f172a" font-size="15" font-weight="700">Secrets &amp; env</text>
+  <text x="306" y="210" fill="#0f172a" font-size="15" font-weight="700">Migrations &amp; recovery</text>
+  <text x="306" y="237" fill="#0f172a" font-size="15" font-weight="700">CI, runtime, auth</text>
+  <text x="306" y="264" fill="#0f172a" font-size="15" font-weight="700">Dependency readiness</text>
+
+  <rect x="550" y="150" width="170" height="102" rx="18" fill="#fff" stroke="#dbe4f3"/>
+  <text x="577" y="189" fill="#2563eb" font-size="15" font-weight="800">03 · POLICY</text>
+  <text x="577" y="220" fill="#0f172a" font-size="17" font-weight="700">Gate threshold</text>
+
+  <rect x="790" y="111" width="160" height="78" rx="17" fill="#ecfdf5" stroke="#9ae6b4"/>
+  <text x="829" y="145" fill="#047857" font-size="14" font-weight="800">READY</text>
+  <text x="818" y="168" fill="#065f46" font-size="13">continue release</text>
+
+  <rect x="790" y="215" width="160" height="78" rx="17" fill="#fff1f2" stroke="#fda4af"/>
+  <text x="816" y="249" fill="#be123c" font-size="14" font-weight="800">BLOCKED</text>
+  <text x="817" y="272" fill="#9f1239" font-size="13">fix evidence first</text>
+
+  <rect x="1010" y="150" width="130" height="102" rx="18" fill="url(#blue)"/>
+  <text x="1041" y="188" fill="#fff" font-size="14" font-weight="800">OUTPUT</text>
+  <text x="1031" y="215" fill="#e9e8ff" font-size="13">Console</text>
+  <text x="1031" y="237" fill="#e9e8ff" font-size="13">MD · JSON · SARIF</text>
+</g>
+<g stroke="#6b7da6" stroke-width="3" fill="none" marker-end="url(#arr)">
+  <path d="M220 201H268"/>
+  <path d="M490 201H538"/>
+  <path d="M720 201H765"/>
+  <path d="M950 201H998"/>
+</g>
+<path d="M765 201C770 180 775 160 790 151" fill="none" stroke="#6b7da6" stroke-width="3"/>
+<path d="M765 201C770 220 775 245 790 254" fill="none" stroke="#6b7da6" stroke-width="3"/>
+<g transform="translate(60 340)">
+  <rect width="1080" height="54" rx="15" fill="#0f172a"/>
+  <text x="27" y="34" fill="#dbeafe" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16">Repository → evidence → policy → READY/BLOCKED → release report / GitHub Action</text>
+</g>
+</svg>
