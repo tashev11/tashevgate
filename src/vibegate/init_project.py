@@ -4,7 +4,6 @@ from pathlib import Path
 
 from .fixer import ensure_gitignore
 
-
 DEFAULT_CONFIG = """version: 1
 
 gate:

@@ -6,12 +6,11 @@ from pathlib import Path
 
 from .config import Config
 
-
 TEXT_EXTENSIONS = {
     ".py", ".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs", ".json", ".yaml", ".yml",
     ".toml", ".ini", ".cfg", ".env", ".md", ".txt", ".sql", ".sh", ".bash", ".zsh",
     ".ps1", ".rb", ".go", ".rs", ".java", ".kt", ".php", ".html", ".css", ".scss",
-    ".vue", ".svelte", ".xml", ".properties", ".tf", ".tfvars", ".conf",
+    ".vue", ".svelte", ".xml", ".properties", ".tf", ".tfvars", ".conf", ".lock",
 }
 
 

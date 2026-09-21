@@ -5,7 +5,6 @@ from pathlib import Path
 from ..context import FileRecord
 from ..models import Finding, Severity
 
-
 LOCKFILE_MAP = {
     "package.json": {"package-lock.json", "pnpm-lock.yaml", "yarn.lock", "bun.lock", "bun.lockb"},
     "pyproject.toml": {"uv.lock", "poetry.lock", "Pipfile.lock"},

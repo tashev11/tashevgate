@@ -6,7 +6,6 @@ from pathlib import Path
 from ..context import FileRecord
 from ..models import Finding, Severity
 
-
 DEBUG_PATTERNS = [
     re.compile(r"\bDEBUG\s*=\s*(?:True|true|1)\b"),
     re.compile(r"\bdebug\s*:\s*true\b", re.IGNORECASE),
@@ -14,8 +13,8 @@ DEBUG_PATTERNS = [
 ]
 
 WILDCARD_CORS = [
-    re.compile(r"allow_origins\s*=\s*\[\s*["']\*["']\s*\]"),
-    re.compile(r"origin\s*:\s*["']\*["']", re.IGNORECASE),
+    re.compile(r"""allow_origins\s*=\s*\[\s*["']\*["']\s*\]"""),
+    re.compile(r"""origin\s*:\s*["']\*["']""", re.IGNORECASE),
 ]
 
 

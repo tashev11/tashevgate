@@ -12,7 +12,7 @@ class Severity(IntEnum):
     BLOCKER = 40
 
     @classmethod
-    def parse(cls, value: str) -> "Severity":
+    def parse(cls, value: str) -> Severity:
         return cls[value.strip().upper()]
 
 

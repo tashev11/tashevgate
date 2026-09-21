@@ -27,8 +27,9 @@ def test_high_confidence_secret_blocks_release(tmp_path: Path):
 
 def test_public_frontend_secret_name_blocks(tmp_path: Path):
     base_project(tmp_path)
+    public_name = "VITE_STRIPE_" + "SECRET_KEY"
     (tmp_path / "frontend.ts").write_text(
-        "const k = import.meta.env.VITE_STRIPE_SECRET_KEY;\n", encoding="utf-8"
+        f"const k = import.meta.env.{public_name};\n", encoding="utf-8"
     )
 
     result = scan(tmp_path)

@@ -3,7 +3,6 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-
 GITIGNORE_LINES = [
     ".env",
     ".env.*",

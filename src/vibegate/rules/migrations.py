@@ -7,7 +7,6 @@ from ..config import Config
 from ..context import FileRecord
 from ..models import Finding, Severity
 
-
 DESTRUCTIVE_SQL = re.compile(
     r"\b(?:DROP\s+(?:TABLE|DATABASE|SCHEMA|COLUMN)|TRUNCATE\s+TABLE|DELETE\s+FROM\s+[^;\n]+(?:;|$))",
     flags=re.IGNORECASE,

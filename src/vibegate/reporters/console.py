@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from ..models import ScanResult
 
-
 ICONS = {
     "blocker": "⛔",
     "high": "🔴",

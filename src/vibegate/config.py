@@ -7,7 +7,6 @@ import yaml
 
 from .models import Severity
 
-
 DEFAULT_EXCLUDES = [
     ".git/**",
     "node_modules/**",

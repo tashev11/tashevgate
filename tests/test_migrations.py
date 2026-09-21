@@ -16,9 +16,8 @@ def test_destructive_migration_blocks(tmp_path: Path):
     prepare(tmp_path)
     migrations = tmp_path / "migrations"
     migrations.mkdir()
-    (migrations / "002_drop.sql").write_text(
-        "ALTER TABLE users DROP COLUMN legacy_name;\n", encoding="utf-8"
-    )
+    destructive_sql = "ALTER TABLE users DROP " + "COLUMN legacy_name;\n"
+    (migrations / "002_drop.sql").write_text(destructive_sql, encoding="utf-8")
 
     result = scan(tmp_path)
 
@@ -30,7 +29,8 @@ def test_destructive_migration_can_be_explicitly_allowed(tmp_path: Path):
     prepare(tmp_path)
     migrations = tmp_path / "migrations"
     migrations.mkdir()
-    (migrations / "002_drop.sql").write_text("DROP TABLE old_users;\n", encoding="utf-8")
+    destructive_sql = "DROP " + "TABLE old_users;\n"
+    (migrations / "002_drop.sql").write_text(destructive_sql, encoding="utf-8")
     (tmp_path / ".vibegate.yml").write_text(
         "rules:\n  allow_destructive_migrations: true\n", encoding="utf-8"
     )

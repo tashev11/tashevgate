@@ -6,7 +6,6 @@ from pathlib import Path
 from ..context import FileRecord
 from ..models import Finding, Severity
 
-
 SECRET_PATTERNS = [
     ("SECRET001", "OpenAI-compatible secret key", re.compile(r"\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\b")),
     ("SECRET002", "GitHub token", re.compile(r"\bgh[pousr]_[A-Za-z0-9]{30,}\b")),
