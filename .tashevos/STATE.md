@@ -34,10 +34,12 @@ Updated: 2026-09-21
 - renamed from VibeGate before public promotion after detecting existing projects with that name
 - TashevGate name/package search returned no direct conflict in the checked web/PyPI searches
 
+## Release
+- TashevGate v0.1.0 published on GitHub on 2026-09-21.
+
 ## Next
-1. Publish/tag v0.1.0 under TashevGate.
-2. Framework-aware auth verification (Issue #1).
-3. Staging sandbox runner (Issue #2).
-4. Database backup/migration/restore proof (Issue #3).
-5. PR baseline/diff mode (Issue #4).
-6. Vibe Certificate evidence format (Issue #5).
+1. Framework-aware auth verification (Issue #1).
+2. Staging sandbox runner (Issue #2).
+3. Database backup/migration/restore proof (Issue #3).
+4. PR baseline/diff mode (Issue #4).
+5. Vibe Certificate evidence format (Issue #5).
